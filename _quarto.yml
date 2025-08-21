@@ -34,7 +34,6 @@ website:
         href: teaching.qmd
         icon: mortarboard
       - text: Julia Lectures
-        href: julia-lectures.qmd
         icon: code-slash
         menu:
           - text: "Lecture 1"
