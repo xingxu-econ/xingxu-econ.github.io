@@ -5,7 +5,11 @@ title: "Homepage"
 # Xing Xu
 
 Graduate Student in Economics, University of Minnesota.  
-Research: international macro
+Research: Macroeconomics, International Economics
 
 - Email: xingxu@umn.edu
 - Google Scholar | SSRN | [CV](cv.qmd)
+
+## What's up
+
+New working paper available: 

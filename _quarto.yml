@@ -20,9 +20,23 @@ website:
         href: teaching.qmd
         icon: mortarboard
       - text: Julia Lectures
-        href: julia-lectures.qmd
-        icon: code-slash
+        menu:
+          - text: "Lecture 1"
+            href: Julia/Lectures/Julia_Lec_1_Compecon_Xing_Xu.ipynb
+          - text: "Lecture 2"
+            href: Julia/Lectures/Julia_Lec_2_Compecon_Xing_Xu.ipynb
+          - text: "Lecture 3"
+            href: Julia/Lectures/Julia_Lec_3_Compecon_Xing_Xu.ipynb
+          - text: "Lecture 4"
+            href: Julia/Lectures/Julia_Lec_4_Compecon_Xing_Xu.ipynb
+          - text: "Lecture 5"
+            href: Julia/Lectures/Julia_Lec_5_Compecon_Xing_Xu.ipynb
+          - text: "Lecture 6"
+            href: Julia/Lectures/Julia_Lec_6_Compecon_Xing_Xu.ipynb
 format:
   html:
-    theme: flatly
+    theme: 
+      light: cosmo
+      dark: darkly
     toc: true
+    css: styles.css
