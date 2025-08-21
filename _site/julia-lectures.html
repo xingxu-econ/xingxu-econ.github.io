@@ -29,6 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./assets/University_of_Minnesota.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -43,16 +44,15 @@ ul.task-list li input[type="checkbox"] {
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
-  "collapse-after": 3,
+  "collapse-after": 2,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
+  "limit": 20,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -67,9 +67,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Xing Xu">
+<meta property="og:site_name" content="Xing Xu">
+<meta name="twitter:title" content="Xing Xu">
+<meta name="twitter:creator" content="@VincentXingXu">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
@@ -109,37 +115,18 @@ ul.task-list li input[type="checkbox"] {
 </i> 
 <span class="menu-text">Teaching</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-julia-lectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Julia Lectures</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-julia-lectures">    
-        <li>
-    <a class="dropdown-item" href="./Julia/Lectures/Julia_Lec_1_Compecon_Xing_Xu.html">
- <span class="dropdown-text">Lecture 1</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="./julia-lectures.html" aria-current="page"> <i class="bi bi-code-slash" role="img">
+</i> 
+<span class="menu-text">Julia Lectures</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./Julia/Lectures/Julia_Lec_2_Compecon_Xing_Xu.html">
- <span class="dropdown-text">Lecture 2</span></a>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xingxu-econ"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./Julia/Lectures/Julia_Lec_3_Compecon_Xing_Xu.html">
- <span class="dropdown-text">Lecture 3</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./Julia/Lectures/Julia_Lec_4_Compecon_Xing_Xu.html">
- <span class="dropdown-text">Lecture 4</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./Julia/Lectures/Julia_Lec_5_Compecon_Xing_Xu.html">
- <span class="dropdown-text">Lecture 5</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./Julia/Lectures/Julia_Lec_6_Compecon_Xing_Xu.html">
- <span class="dropdown-text">Lecture 6</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -404,6 +391,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -719,8 +711,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Xing Xu · University of Minnesota</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/xingxu-econ/xingxu-econ.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:xingxu@umn.edu">
+<p>Email</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

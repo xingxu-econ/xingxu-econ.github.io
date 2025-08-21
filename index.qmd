@@ -1,15 +1,74 @@
 ---
-title: "Homepage"
+page-layout: article
 ---
 
+::: {.columns}
+::: {.column width="65%"}
 # Xing Xu
 
-Graduate Student in Economics, University of Minnesota.  
-Research: Macroeconomics, International Economics
+I am a fourth year PhD candidate in Economics at the University of Minnesota and a research analyst at the Federal Reserve Bank of Minneapolis. I work broadly on the topics under Macroeconomics and International Economics.  
 
-- Email: xingxu@umn.edu
-- Google Scholar | SSRN | [CV](cv.qmd)
+<div class="mt-3">
+[CV](cv.qmd){.btn .btn-primary .btn-sm}
+[Research](research.qmd){.btn .btn-outline-primary .btn-sm}
+[Teaching](teaching.qmd){.btn .btn-outline-primary .btn-sm}
+[GitHub](https://github.com/2xu2){.btn .btn-outline-secondary .btn-sm}
+[Email](mailto:xu000956@umn.edu){.btn .btn-outline-secondary .btn-sm}
+</div>
+:::
 
-## What's up
+::: {.column width="35%"}
+![portrait](assets/IMG_0419.jpg){fig-alt="Portrait of Xing Xu" width="100%"}
+:::
+:::
 
-New working paper available: 
+---
+
+## News
+- **2025-08** — New draft available on NBER: Openness and Growth: A Comparison of the Experiences of China and Mexico (joint with Tim Kehoe)
+<!-- 
+---
+
+## Selected research highlights
+- **Fixed Exchange Rates, Macroprudential Policies, and Monetary Policy Transmissions**  
+  Heterogeneous-agent framework quantifying transmission under fixed regimes with capital controls; policy mix and welfare.  
+  [Abstract & materials →](research.qmd)
+
+- **Openness and Growth: China vs. Mexico (revisited)**  
+  Empirical re-assessment of openness, structural transformation, and growth paths.  
+  [Abstract & materials →](research.qmd)
+
+*Full list and drafts on the* [Research](research.qmd) *page.*
+
+---
+
+## Teaching & materials
+- **Computational Economics (PhD)** — Julia & Python; dynamic programming, equilibrium computation.  
+  Syllabus and assignments on the [Teaching](teaching.qmd) page.
+
+- **International Macroeconomics (Undergraduate)** — Open-economy models, exchange-rate regimes, and policy.  
+  Materials on the [Teaching](teaching.qmd) page.
+
+### Julia Lectures (notebooks)
+- Lecture 1 — Intro to Julia for Econ: arrays, types, performance  
+  [`Julia_Lec_1_Compecon_Xing_Xu.ipynb`](Julia/Lectures/Julia_Lec_1_Compecon_Xing_Xu.ipynb)
+- Lecture 2 — Numerical methods & root finding  
+  [`Julia_Lec_2_Compecon_Xing_Xu.ipynb`](Julia/Lectures/Julia_Lec_2_Compecon_Xing_Xu.ipynb)
+- Lecture 3 — Dynamic programming & value function iteration  
+  [`Julia_Lec_3_Compecon_Xing_Xu.ipynb`](Julia/Lectures/Julia_Lec_3_Compecon_Xing_Xu.ipynb)
+- Lecture 4 — Calibration & estimation workflows  
+  [`Julia_Lec_4_Compecon_Xing_Xu.ipynb`](Julia/Lectures/Julia_Lec_4_Compecon_Xing_Xu.ipynb)
+- Lecture 5 — Heterogeneous agents & aggregation  
+  [`Julia_Lec_5_Compecon_Xing_Xu.ipynb`](Julia/Lectures/Julia_Lec_5_Compecon_Xing_Xu.ipynb)
+- Lecture 6 — Open-economy blocks & policy  
+  [`Julia_Lec_6_Compecon_Xing_Xu.ipynb`](Julia/Lectures/Julia_Lec_6_Compecon_Xing_Xu.ipynb)
+
+*A compact overview with module blurbs is also on the* [Julia Lectures](julia-lectures.qmd) *page.*
+
+--- -->
+
+## Contact
+Department of Economics, University of Minnesota  
+Email: [xu000956@umn.edu](mailto:xu000956@umn.edu)
+
+*CV, papers, and teaching materials are updated regularly.*
