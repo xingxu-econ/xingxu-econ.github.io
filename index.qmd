@@ -1,0 +1,11 @@
+---
+title: "Homepage"
+---
+
+# Xing Xu
+
+Graduate Student in Economics, University of Minnesota.  
+Research: international macro
+
+- Email: xingxu@umn.edu
+- Google Scholar | SSRN | [CV](cv.qmd)

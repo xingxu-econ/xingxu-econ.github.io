@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "Xing Xu"
+  site-url: https://xingxu-econ.github.io/
+  navbar:
+    pinned: true
+    left:
+      - text: Homepage
+        href: index.qmd
+        icon: house
+      - text: Research
+        href: research.qmd
+        icon: journal-text
+      - text: CV
+        href: cv.qmd
+        icon: file-earmark-person
+      - text: Teaching
+        href: teaching.qmd
+        icon: mortarboard
+      - text: Julia Lectures
+        href: julia-lectures.qmd
+        icon: code-slash
+format:
+  html:
+    theme: flatly
+    toc: true
