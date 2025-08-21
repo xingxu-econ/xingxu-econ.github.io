@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Xing Xu - Introduction to Julia on Computational Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/University_of_Minnesota.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 2,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Xing Xu - Introduction to Julia on Computational Economics">
+<meta property="og:description" content="Xing Xu — Economics, University of Minnesota. International macro.">
+<meta property="og:site_name" content="Xing Xu">
+<meta name="twitter:title" content="Xing Xu - Introduction to Julia on Computational Economics">
+<meta name="twitter:description" content="Xing Xu — Economics, University of Minnesota. International macro.">
+<meta name="twitter:creator" content="@VincentXingXu">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Xing Xu</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Homepage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> <i class="bi bi-journal-text" role="img">
+</i> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> <i class="bi bi-file-earmark-person" role="img">
+</i> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> <i class="bi bi-mortarboard" role="img">
+</i> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-julia-lectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-code-slash" role="img">
+</i> 
+ <span class="menu-text">Julia Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-julia-lectures">    
+        <li>
+    <a class="dropdown-item" href="../../Julia/Lectures/Julia_Lec_1_Compecon_Xing_Xu.html">
+ <span class="dropdown-text">Lecture 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Julia/Lectures/Julia_Lec_2_Compecon_Xing_Xu.html">
+ <span class="dropdown-text">Lecture 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Julia/Lectures/Julia_Lec_3_Compecon_Xing_Xu.html">
+ <span class="dropdown-text">Lecture 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Julia/Lectures/Julia_Lec_4_Compecon_Xing_Xu.html">
+ <span class="dropdown-text">Lecture 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Julia/Lectures/Julia_Lec_5_Compecon_Xing_Xu.html">
+ <span class="dropdown-text">Lecture 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Julia/Lectures/Julia_Lec_6_Compecon_Xing_Xu.html">
+ <span class="dropdown-text">Lecture 6</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xingxu-econ"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#why-dp" id="toc-why-dp" class="nav-link" data-scroll-target="#why-dp">Why DP?</a></li>
+  <li><a href="#background-knowledge" id="toc-background-knowledge" class="nav-link" data-scroll-target="#background-knowledge">Background knowledge</a></li>
+  </ul></li>
+  <li><a href="#lecture-1-julia-fundamentals" id="toc-lecture-1-julia-fundamentals" class="nav-link" data-scroll-target="#lecture-1-julia-fundamentals">Lecture 1: Julia Fundamentals</a>
+  <ul class="collapse">
+  <li><a href="#packages-and-projects" id="toc-packages-and-projects" class="nav-link" data-scroll-target="#packages-and-projects">1.1 Packages and Projects</a></li>
+  <li><a href="#packages-and-projects-using-the-pkg-api" id="toc-packages-and-projects-using-the-pkg-api" class="nav-link" data-scroll-target="#packages-and-projects-using-the-pkg-api">1.1.1 Packages and Projects using the Pkg API</a></li>
+  <li><a href="#packages-and-projects-using-repl" id="toc-packages-and-projects-using-repl" class="nav-link" data-scroll-target="#packages-and-projects-using-repl">1.1.2 Packages and Projects using REPL</a></li>
+  <li><a href="#introductory-example-for-using-packages" id="toc-introductory-example-for-using-packages" class="nav-link" data-scroll-target="#introductory-example-for-using-packages">1.2 Introductory example for using packages</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">1.2 Functions</a></li>
+  <li><a href="#types-a-short-summary" id="toc-types-a-short-summary" class="nav-link" data-scroll-target="#types-a-short-summary">1.3 Types (a short summary)</a></li>
+  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">1.4 Help?</a></li>
+  <li><a href="#macros-not-macroeconomics" id="toc-macros-not-macroeconomics" class="nav-link" data-scroll-target="#macros-not-macroeconomics">1.5 Macros (not Macroeconomics)</a></li>
+  <li><a href="#miscellaneous-facts-about-julia-under-construction" id="toc-miscellaneous-facts-about-julia-under-construction" class="nav-link" data-scroll-target="#miscellaneous-facts-about-julia-under-construction">1.6 Miscellaneous facts about Julia (under construction)</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/xingxu-econ/xingxu-econ.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introduction to Julia on Computational Economics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Xing Xu, University of Minnesota, 2024 Summer</em></p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The purpose of the class is to get you familiarize with some basic dynamic programming (DP) problems in economics and train you to be comfortable with coding them in Julia.</p>
+<section id="why-dp" class="level3">
+<h3 class="anchored" data-anchor-id="why-dp">Why DP?</h3>
+<p>Dynamic programming is the key to solving modern economic models. Most macro models now are dynamic general equilibrium models. Knowing how to solve recursive models is in additional useful for searching, matching and even game theory (with sequential games).</p>
+<p>### Why Julia?</p>
+<p>Julia is the most modern tool for computations. It preserves the efficiency and clarity of coding while providing astounding speed. For comparison, c++ and Fortran are as fast but coding in them requires a lot more work as basically everything has to be built from scratch. Another extreme is Stata, which is super easy to code in (say, reg y x), but is absurdly slow and extremely limited in its applications (can’t even perform DP).</p>
+<p>Julia reaches a great balance and is perfectly suited for computational economics. You will see its beauty in action once you get comfortable with it.</p>
+</section>
+<section id="background-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="background-knowledge">Background knowledge</h3>
+<p>I will list the backgrounds used that are considered as known. Additional knowledge will be specified when used.</p>
+<p>Math Preliminaries (undergraduate level knowledge is sufficient):</p>
+<ul>
+<li><p>Linear algebra</p></li>
+<li><p>Real analysis</p></li>
+<li><p>Probability theory</p></li>
+<li><p>Basic understanding of Markov Chains</p></li>
+<li><p>Knowledge of basic optimization theory will be a plus (Sundaram &lt;A First Course in Optimization Theory&gt;)</p></li>
+</ul>
+<p>Economics: * Basic choice theory (Chapter 2 MWG) (Preferences, utility representation)</p>
+<ul>
+<li><p>Basic consumer theory (Chapter 3 MWG) (Utility maximization)</p></li>
+<li><p>Basic producer theory (Chapter 5 MWG)</p></li>
+<li><p>An idea of Competitive Equilibrium and Welfare Theorems (Chapter 10 MWG)</p></li>
+</ul>
+<p>Julia (required reading): * Setup of Julia environment, <a href="https://julia.quantecon.org/getting_started_julia/getting_started.html#">Quantecon 1</a></p>
+<ul>
+<li><p>Introduction to Julia <a href="https://julia.quantecon.org/getting_started_julia/julia_by_example.html">Quantecon 2</a></p></li>
+<li><p>Julia Essentials <a href="https://julia.quantecon.org/getting_started_julia/julia_essentials.html">Quantecon 3</a></p></li>
+<li><p>Arrays, Tuples, Ranges, and Other Fundamental Types <a href="https://julia.quantecon.org/getting_started_julia/fundamental_types.html#">Quantecon 4</a></p></li>
+<li><p>Basic understanding is good: Introduction to Types and Generic Programming <a href="https://julia.quantecon.org/getting_started_julia/introduction_to_types.html">Quantecon 5</a></p></li>
+</ul>
+<p>Other good references:</p>
+<p>Notes: * <a href="https://perhuaman.files.wordpress.com/2014/06/macrotheory-dirk-krueger.pdf">Dirk Krueger’s Macroeconomic Theory notes</a></p>
+<ul>
+<li><a href="http://users.econ.umn.edu/~tkehoe/classes/BlackwellsConditions.pdf">Tim Kehoe’s notes on Blackwell sufficient conditions</a></li>
+</ul>
+<p>Books: * Adda &amp; Cooper &lt;Dynamic economics&gt; (<strong>strongly recommend</strong>)</p>
+<ul>
+<li><p>Stokey, Lucas with Prescott &lt;Recursive methods in economic dynamics&gt;</p></li>
+<li><p>Ljungqvist &amp; Sargent &lt;Recursive Macroeconomic Theory&gt;</p></li>
+<li><p>Heer &amp; Maußner <a href="https://link.springer.com/book/10.1007/978-3-540-85685-6">&lt;Dynamic General Equilibrium Modeling&gt;</a></p></li>
+<li><p>Stachurski <a href="https://johnstachurski.net/edtc">&lt;Economic Dynamics: Theory and Computation (Second Edition)&gt;</a></p></li>
+</ul>
+</section>
+</section>
+<section id="lecture-1-julia-fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-1-julia-fundamentals">Lecture 1: Julia Fundamentals</h2>
+<p>This acts as a review for Lecture 1.1 - 1.5 for Julia on Quantecon. I will only focus on stuffs we will use for the following lectures. This lecture accompanies a succinct assignment to get you familiarized with writing in the language and playing with it on the Jupyter Notebook.</p>
+<section id="packages-and-projects" class="level3">
+<h3 class="anchored" data-anchor-id="packages-and-projects">1.1 Packages and Projects</h3>
+<p>Working with packages is of vital importance in Julia. We use “LinearAlgebra” for matrix operations, “Statistics” for different distributions, “Plots” for, obviously, plots, etc. One thing you always need to keep in mind is how to download some packages.</p>
+<p>After downloading the essential packages you need, you have developed something called an “environment”. For compatibility, version control and reproducibility reasons, one often wants to create individual environments for different files. “Projects” manages each individual local environments. It will create a project repository that usually contains a “Project.toml”, a “Manifest.toml” and your code files.</p>
+</section>
+<section id="packages-and-projects-using-the-pkg-api" class="level3">
+<h3 class="anchored" data-anchor-id="packages-and-projects-using-the-pkg-api">1.1.1 Packages and Projects using the Pkg API</h3>
+<p>Now what are these exactly? Put this notebook into an individual folder and run the following lines.</p>
+<div id="cell-5" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Pkg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">activate</span>(<span class="st">"."</span>)  <span class="co"># Activate a local environment </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"LinearAlgebra"</span>) <span class="co"># add the package "LinearAlgebra"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should find two extra files in the folder. A “Project.toml” and a “Manifest.toml”. Double click on each of them in the folder or just click on them in the editor in Vscode. Take a look. What are in them?</p>
+<p>The “Project.toml” file contains the name of the package, its unique UUID, its version, the authors and potential dependencies.</p>
+<p>The “Manifest.toml” file shows the information for the resulting dependencies of the added packages.</p>
+<p>You can check the status of your package using the following code.</p>
+<div id="cell-8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">status</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Status `~/Documents/Teaching/Julia course 2024/Julia/Lectures/Project.toml`
+  [37e2e46d] LinearAlgebra</code></pre>
+</div>
+</div>
+<p>Sometimes you want to run other people’s code. Say you have stored some people’s project into a folder on your laptop (you just need the “Project.toml” file). To activate the exact environment, the following code will automatically download all packages and their dependencies of the same version and make it the current environment.</p>
+<div id="cell-10" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">instantiate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="packages-and-projects-using-repl" class="level3">
+<h3 class="anchored" data-anchor-id="packages-and-projects-using-repl">1.1.2 Packages and Projects using REPL</h3>
+<p>All the above operations can also be done using REPL (Read-Evaluate-Print-Loop).</p>
+<p>To activate REPL in Vscode, press <code>CTRL + Shift + P</code> in Windows or <code>CMD + Shift + P</code> in OS, then type “start REPL” in the command palette and click on it.</p>
+<p>Now the Terminal should pop up and you should see “julia&gt;”. This indicates we have successfully started the REPL.</p>
+<p>Next type <code>]</code> to enter the package mode. It should write something like “(Julia course 2023 Summer) pkg&gt;”. To exit, simply press <code>delete</code>.</p>
+<p>With the package mode, we can perform the same functionality as before and <a href="https://pkgdocs.julialang.org/v1/environments/">more</a>.</p>
+<p><code>activate.</code> activate the project at the current directory.</p>
+<p><code>st</code> shows the status.</p>
+<p><code>add LinearAlgebra</code> add the LinearAlgebra package to the local environment.</p>
+<p><code>instantiate</code> automatically downloads all the missing dependencies from the particular “Project.toml”.</p>
+</section>
+<section id="introductory-example-for-using-packages" class="level3">
+<h3 class="anchored" data-anchor-id="introductory-example-for-using-packages">1.2 Introductory example for using packages</h3>
+<p>We will see a lot more packages and their usages along the way. For the moment, I will show some basic functionalities of the LinearAlgebra package as an example. For more information, check <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/">here</a>.</p>
+<p>First, you need to call the Package with “using”.</p>
+<div id="cell-13" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Define a matrix:</p>
+<div id="cell-15" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span>; <span class="fl">4</span> <span class="fl">5</span> <span class="fl">6</span>; <span class="fl">7</span> <span class="fl">8</span> <span class="fl">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3×3 Matrix{Int64}:
+ 1  2  3
+ 4  5  6
+ 7  8  9</code></pre>
+</div>
+</div>
+<p>A couple things you can do. The codes explain themselves.</p>
+<div id="cell-17" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tr</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>15</code></pre>
+</div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>-9.516197353929915e-16</code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inv</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3×3 Matrix{Float64}:
+  3.15252e15  -6.30504e15   3.15252e15
+ -6.30504e15   1.26101e16  -6.30504e15
+  3.15252e15  -6.30504e15   3.15252e15</code></pre>
+</div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">norm</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>16.881943016134134</code></pre>
+</div>
+</div>
+<div id="cell-21" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigvals</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Float64}:
+ -1.1168439698070434
+ -8.582743335036247e-16
+ 16.11684396980703</code></pre>
+</div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigvecs</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3×3 Matrix{Float64}:
+ -0.78583     0.408248  -0.231971
+ -0.0867513  -0.816497  -0.525322
+  0.612328    0.408248  -0.818673</code></pre>
+</div>
+</div>
+<p><code>I</code> represents an identity matrix of any size. For example,</p>
+<div id="cell-24" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">*</span> I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3×3 Matrix{Int64}:
+ 1  2  3
+ 4  5  6
+ 7  8  9</code></pre>
+</div>
+</div>
+<p>The dot product can also be calculated.</p>
+<div id="cell-26" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dot</span>(A, I) <span class="co"># Same as tr(A)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>15</code></pre>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">⋅</span> I</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#⋅ is typed by "\cdot" then press "tab"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>15</code></pre>
+</div>
+</div>
+<p>Asolves Ax = B. Note that this is strictly preferred to inv(A)*B. Never do the latter.</p>
+<div id="cell-29" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">\</span>B</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or B/A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Float64}:
+ -0.23333333333333334
+  0.46666666666666673
+  0.09999999999999994</code></pre>
+</div>
+</div>
+<p>Element-wise operations are done through <code>.</code> (more discussions on this next lecture).</p>
+<div id="cell-31" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">.+</span> <span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3×3 Matrix{Int64}:
+  4   5   6
+  7   8   9
+ 10  11  12</code></pre>
+</div>
+</div>
+<p>You can also perform factorizations on the matrices.</p>
+<div id="cell-33" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lu</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>LU{Float64, Matrix{Float64}}
+L factor:
+3×3 Matrix{Float64}:
+ 1.0       0.0  0.0
+ 0.142857  1.0  0.0
+ 0.571429  0.5  1.0
+U factor:
+3×3 Matrix{Float64}:
+ 7.0  8.0        9.0
+ 0.0  0.857143   1.71429
+ 0.0  0.0       -1.58603e-16</code></pre>
+</div>
+</div>
+<div id="cell-34" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qr</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>LinearAlgebra.QRCompactWY{Float64, Matrix{Float64}}
+Q factor:
+3×3 LinearAlgebra.QRCompactWYQ{Float64, Matrix{Float64}}:
+ -0.123091   0.904534   0.408248
+ -0.492366   0.301511  -0.816497
+ -0.86164   -0.301511   0.408248
+R factor:
+3×3 Matrix{Float64}:
+ -8.12404  -9.60114   -11.0782
+  0.0       0.904534    1.80907
+  0.0       0.0        -8.88178e-16</code></pre>
+</div>
+</div>
+<div id="cell-35" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cholesky decomposition doesn't work here, which creates an error</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cholesky</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>PosDefException: PosDefException: matrix is not Hermitian; Cholesky factorization failed.</code></pre>
+</div>
+</div>
+<p>Not surprisingly, we can also do vector operations.</p>
+<div id="cell-37" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">3</span>]</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 2
+ 2
+ 3</code></pre>
+</div>
+</div>
+<div id="cell-38" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">+</span> v2 </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same as v1 .+ v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 3
+ 3
+ 6</code></pre>
+</div>
+</div>
+<p>Dot products for vectors are same as for matrices, except for vectors we can simply do:</p>
+<div id="cell-40" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>v1<span class="op">'</span> <span class="op">*</span> v2 <span class="co">#' for transpose</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>13</code></pre>
+</div>
+</div>
+<div id="cell-41" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dot</span>(v1, v2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>13</code></pre>
+</div>
+</div>
+<div id="cell-42" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">⋅</span> v2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>13</code></pre>
+</div>
+</div>
+<div id="cell-43" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>α <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>α <span class="op">*</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>0.6</code></pre>
+</div>
+</div>
+</section>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">1.2 Functions</h3>
+<p>In Julia functions can be built in line or specifically calling <code>function</code>.</p>
+<div id="cell-45" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span>  x<span class="op">^</span>y</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">2</span>,<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>4</code></pre>
+</div>
+</div>
+<div id="cell-46" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Or</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f</span>(x, y)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">^</span>y</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">2</span>,<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p>If you want to input an array into f, it gives an error as it is not clear what you mean.</p>
+<div id="cell-48" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>]</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v1, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>MethodError: MethodError: no method matching ^(::Vector{Int64}, ::Int64)
+
+Closest candidates are:
+  ^(!Matched::Union{AbstractChar, AbstractString}, ::Integer)
+   @ Base strings/basic.jl:733
+  ^(!Matched::Diagonal, ::Integer)
+   @ LinearAlgebra ~/Applications/Julia-1.9.3.app/Contents/Resources/julia/share/julia/stdlib/v1.9/LinearAlgebra/src/diagonal.jl:208
+  ^(!Matched::Diagonal, ::Real)
+   @ LinearAlgebra ~/Applications/Julia-1.9.3.app/Contents/Resources/julia/share/julia/stdlib/v1.9/LinearAlgebra/src/diagonal.jl:207
+  ...</code></pre>
+</div>
+</div>
+<p>You can modify this by defining the function specifically for vectors.</p>
+<div id="cell-50" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">g</span>(x,y)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> <span class="fu">similar</span>(x) <span class="co"># similar() generates an size/matrix of the same size and type as the input</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fu">eachindex</span>(x)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>        z[i] <span class="op">=</span> x[i]<span class="op">^</span>y</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> z</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">g</span>(v1, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>g(v1, 2) = [1, 4, 9]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 1
+ 4
+ 9</code></pre>
+</div>
+</div>
+<p>Or in a more concise fashion,</p>
+<div id="cell-52" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x,y) <span class="op">=</span> [z<span class="op">^</span>y for z <span class="kw">in</span> x] <span class="co"># or g(x,y) = [x[i]^y for i in eachindex(x)]</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(v1, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 1
+ 4
+ 9</code></pre>
+</div>
+</div>
+<p>Instead, you can also apply “.” to broadcast the function onto every element of v1. This comes very handy in a lot of cases.</p>
+<div id="cell-54" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span>  x<span class="op">^</span>y</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>.(v1, <span class="fl">2</span>)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># should write f.(v1, Ref(2)) for rigidity. You can think of Ref() as fixing the input here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 1
+ 4
+ 9</code></pre>
+</div>
+</div>
+</section>
+<section id="types-a-short-summary" class="level3">
+<h3 class="anchored" data-anchor-id="types-a-short-summary">1.3 Types (a short summary)</h3>
+<p>Types are <em>incredibly important</em> for coding in Julia. It matters for the correctness, consistency and efficiency of the codes. However, my past experience told me that it is almost impossible to learn this from pure memorization. You have to actually work with them and think along the way. Here I will just let you see some commonly used types and give a simple example about declaration of types.</p>
+<p>For more info on types, check the <a href="https://docs.julialang.org/en/v1/manual/types/">documentation</a>.</p>
+<p>The default type for (simple) integers is Int64</p>
+<div id="cell-57" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof(1) = Int64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Int64</code></pre>
+</div>
+</div>
+<p>The default type for (simple) floats is Float64</p>
+<div id="cell-59" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>(<span class="fl">1.0</span>) <span class="co">#putting ".0" after 1 make the Julia compiler infer it is a float</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof(1.0) = Float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Float64</code></pre>
+</div>
+</div>
+<p>The default type for strings is String</p>
+<div id="cell-61" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>(<span class="st">"string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof("string") = String</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>String</code></pre>
+</div>
+</div>
+<p>Type of Boolean (true of false) variables.</p>
+<div id="cell-63" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>(<span class="cn">true</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>(<span class="cn">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof(true) = Bool
+typeof(false) = Bool</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Bool</code></pre>
+</div>
+</div>
+<div id="cell-64" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that sometimes we use the feature that true equals to 1 and false equals to 0</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="cn">true</span> <span class="op">==</span> <span class="fl">1</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="cn">false</span> <span class="op">==</span> <span class="fl">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>true == 1 = true
+false == 0 = true</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>true</code></pre>
+</div>
+</div>
+<p>What are the type of arrays?</p>
+<div id="cell-66" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>([<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof([1, 2, 3]) = Vector{Int64}</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre>Vector{Int64}<span class="ansi-bright-black-fg"> (alias for </span><span class="ansi-bright-black-fg">Array{Int64, 1}</span><span class="ansi-bright-black-fg">)</span></pre>
+</div>
+</div>
+</div>
+<div id="cell-67" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof([1.0, 2.0, 3.0]) = Vector{Float64}</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre>Vector{Float64}<span class="ansi-bright-black-fg"> (alias for </span><span class="ansi-bright-black-fg">Array{Float64, 1}</span><span class="ansi-bright-black-fg">)</span></pre>
+</div>
+</div>
+</div>
+<p>How about the type of [1, 2.0, 3.0], where the first entry is an integer?</p>
+<div id="cell-69" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>([<span class="fl">1</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof([1, 2.0, 3.0]) = Vector{Float64}</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre>Vector{Float64}<span class="ansi-bright-black-fg"> (alias for </span><span class="ansi-bright-black-fg">Array{Float64, 1}</span><span class="ansi-bright-black-fg">)</span></pre>
+</div>
+</div>
+</div>
+<p>Note that it returns a vector of floats. This is subtle but keep in mind that sometimes these type of inconsistencies can create problems. This also indicates that the type within an array is unified, to find the type of the elements in an array. We commonly use the following <code>eltype()</code>.</p>
+<div id="cell-71" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">eltype</span>([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>])</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="co"># differentiate with typeof([1.0, 2.0, 3.0])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>eltype([1.0, 2.0, 3.0]) = Float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Float64</code></pre>
+</div>
+</div>
+<p>Tuples are constructed using small brackets. We can also check the type of a tuple, which is different from the behavior of an array (vector).</p>
+<div id="cell-73" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>((<span class="fl">1</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="st">"string"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>typeof((1, 2.0, 3.0, "string")) = Tuple{Int64, Float64, Float64, String}</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Tuple{Int64, Float64, Float64, String}</code></pre>
+</div>
+</div>
+<p>Now let’s look at the function in 1.2 again, which is</p>
+<div id="cell-75" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">g</span>(x,y)</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> <span class="fu">similar</span>(x)</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fu">eachindex</span>(x)</span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>        z[i] <span class="op">=</span> x[i]<span class="op">^</span>y</span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> z</span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">g</span>(v1, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>g(v1, 2) = [1, 4, 9]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 1
+ 4
+ 9</code></pre>
+</div>
+</div>
+<p>In practice, sometimes we want to specify the types of inputs, which can be down using <code>::</code>.</p>
+<div id="cell-77" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">g</span>(x <span class="op">::</span><span class="dt"> Vector{Int64}</span>,y <span class="op">::</span><span class="dt"> Int64</span>)</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> <span class="fu">similar</span>(x)</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fu">eachindex</span>(x)</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>        z[i] <span class="op">=</span> x[i]<span class="op">^</span>y</span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> z</span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">g</span>(v1, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>g(v1, 2) = [1, 4, 9]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 1
+ 4
+ 9</code></pre>
+</div>
+</div>
+<div id="cell-78" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>([<span class="fl">2</span>], <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>1-element Vector{Int64}:
+ 4</code></pre>
+</div>
+</div>
+<div id="cell-79" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>([<span class="fl">2.0</span>], <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>1-element Vector{Float64}:
+ 4.0</code></pre>
+</div>
+</div>
+<div id="cell-80" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(<span class="fl">2.0</span>, <span class="fl">2</span>) <span class="co"># this doesn't work </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>MethodError: MethodError: no method matching similar(::Float64)
+
+Closest candidates are:
+  similar(!Matched::Union{Adjoint{T, var"#s972"}, Transpose{T, var"#s972"}} where {T, var"#s972"&lt;:(AbstractVector)})
+   @ LinearAlgebra ~/Applications/Julia-1.9.3.app/Contents/Resources/julia/share/julia/stdlib/v1.9/LinearAlgebra/src/adjtrans.jl:329
+  similar(!Matched::Union{Adjoint{T, var"#s972"}, Transpose{T, var"#s972"}} where {T, var"#s972"&lt;:(AbstractVector)}, !Matched::Type{T}) where T
+   @ LinearAlgebra ~/Applications/Julia-1.9.3.app/Contents/Resources/julia/share/julia/stdlib/v1.9/LinearAlgebra/src/adjtrans.jl:330
+  similar(!Matched::Union{Adjoint{T, S}, Transpose{T, S}} where {T, S})
+   @ LinearAlgebra ~/Applications/Julia-1.9.3.app/Contents/Resources/julia/share/julia/stdlib/v1.9/LinearAlgebra/src/adjtrans.jl:333
+  ...</code></pre>
+</div>
+</div>
+<p>However this sometimes creates confusions. We can input a matrix and still get out results:</p>
+<div id="cell-82" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">=</span> [<span class="fl">2</span> <span class="fl">2</span>; <span class="fl">2</span> <span class="fl">2</span>]</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(m1, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2×2 Matrix{Int64}:
+ 4  4
+ 4  4</code></pre>
+</div>
+</div>
+<p>This is why Quantecon stresses the importance for generic programming. See <a href="https://julia.quantecon.org/getting_started_julia/introduction_to_types.html#">Quantecon 5</a> and <a href="https://julia.quantecon.org/more_julia/generic_programming.html">Quantecon 6</a> for details. In short, you should avoid specifying particular types unless necessary and let your codes be compatible with different types.</p>
+<p><br></p>
+<p>In addition, keep in mind that you might specify some types without even knowing that you are doing so. One example is when you want to create a vector of 0 of type Int with length 5. It is tempted to use the built-in function <code>zeros(5)</code>. Beware that this implicitly imposes that 0s are of type float.</p>
+<div id="cell-84" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zeros</span>(<span class="fl">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>5-element Vector{Float64}:
+ 0.0
+ 0.0
+ 0.0
+ 0.0
+ 0.0</code></pre>
+</div>
+</div>
+<div id="cell-85" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">eltype</span>(<span class="fu">zeros</span>(<span class="fl">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>eltype(zeros(5)) = Float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Float64</code></pre>
+</div>
+</div>
+<p>Suppose you want the zeros with type int, one way is to use <code>Int()</code>. Again you need to broadcast it to each element.</p>
+<div id="cell-87" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Int</span>.(<span class="fu">zeros</span>(<span class="fl">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>5-element Vector{Int64}:
+ 0
+ 0
+ 0
+ 0
+ 0</code></pre>
+</div>
+</div>
+<p>Or you can simply declare within <code>zeros()</code>.</p>
+<div id="cell-89" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zeros</span>(<span class="dt">Int</span>,<span class="fl">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>5-element Vector{Int64}:
+ 0
+ 0
+ 0
+ 0
+ 0</code></pre>
+</div>
+</div>
+</section>
+<section id="help" class="level3">
+<h3 class="anchored" data-anchor-id="help">1.4 Help?</h3>
+<p>How do you know you can do something as <code>zeros(Int,5)</code>? For most built-in functions, you can find it using Help from the REPL.</p>
+<p>If you haven’t quitted Vscode, you are probably still in REPL from 1.1.</p>
+<p>If you have, press <code>CTRL + Shift + P</code> in Windows or <code>CMD + Shift + P</code> in OS, then type “start REPL” in the command palette and click on it. You should again see “julia&gt;”, which indicates you are at REPL.</p>
+<p>Now simply typing <code>?</code> enters into the help mode. You should see “help?&gt;”. Let’s try with the function <code>zeros()</code>. Type in the <code>zeros</code> or <code>zeros()</code> and press <code>Return</code> on your keyboard. You should see it shows the first input of function is “[T=Float64,]”, so unless otherwise specified, <code>zeros()</code> will generate an array with type “Float64”.</p>
+<p>Help? is usually the first place to go if you encounter some built-in functions that you are not sure with. As we go, you will be introduced to a lot more of them.</p>
+</section>
+<section id="macros-not-macroeconomics" class="level3">
+<h3 class="anchored" data-anchor-id="macros-not-macroeconomics">1.5 Macros (not Macroeconomics)</h3>
+<p>Macros are a powerful tool in Julia. Macros are a type of <a href="https://docs.julialang.org/en/v1/manual/metaprogramming/">metaprogramming</a> (whatever this means). Just keep in mind that Macros start with an <code>@</code> and take in general expressions instead of values as inputs. You can also check with help? for documentation of each Macro.</p>
+<p>I know it sounds a little absurd but knowing Macros well is a ticket to becoming a Julia master. For the moment, knowing a couple examples is sufficient.</p>
+<p>We have used <code>@show</code> to show the output of a function. However, note that the inputs it can take is much more general. Say, it can take in the function itself.</p>
+<div id="cell-95" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>f = f</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>f (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="cell-96" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">f</span>(<span class="fl">1</span>,<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>f(1, 2) = 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p><code>@time begin ... end</code> works like <code>tic ... tok</code> in Matlab. It gives the duration of running the code between.</p>
+<div id="cell-98" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="cf">begin</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0.000001 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>2</code></pre>
+</div>
+</div>
+<p>Another example is <code>@assert</code>, which can be used for generating some statements if some conditions are not met.</p>
+<div id="cell-100" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>]</span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> [<span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>]</span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@assert</span> v1 <span class="op">==</span> v2 <span class="st">"v1 is not equal to v2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>AssertionError: AssertionError: v1 is not equal to v2</code></pre>
+</div>
+</div>
+<div id="cell-101" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no statement is generated if the condition is met</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@assert</span> v1 <span class="op">==</span> v1 <span class="st">"v1 is not equal to v1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A couple other useful Macros:</p>
+<p><code>@.</code> Broadcasts . onto all arguments in one line.</p>
+<p><code>@inbounds</code> Eliminates array bounds checking within expressions (efficiency).</p>
+<p><code>@inline</code> Performs inline Maths (efficiency).</p>
+<p><code>@view</code> Creates a data structure that acts like an array (it is a subtype of AbstractArray ), but the underlying data is actually part of another array. Often used to create a temporary array for efficiently.</p>
+<p>For more, check <a href="https://docs.julialang.org/en/v1/manual/metaprogramming/#man-macros">here</a>.</p>
+<div id="cell-103" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">j</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">j</span>.(v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+ 1
+ 4
+ 9</code></pre>
+</div>
+</div>
+<div id="cell-104" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>@. (<span class="fu">j</span>(v1) <span class="op">+</span> <span class="fl">2</span>)<span class="op">*</span><span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Int64}:
+  6
+ 12
+ 22</code></pre>
+</div>
+</div>
+</section>
+<section id="miscellaneous-facts-about-julia-under-construction" class="level3">
+<h3 class="anchored" data-anchor-id="miscellaneous-facts-about-julia-under-construction">1.6 Miscellaneous facts about Julia (under construction)</h3>
+<p>Julia has a particular behavior when assigning an array to another. What is your guess for the result of the following code?</p>
+<div id="cell-106" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">3</span>]</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>y[<span class="fl">1</span>] <span class="op">=</span> <span class="fl">6</span></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x = [6, 3]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Int64}:
+ 6
+ 3</code></pre>
+</div>
+</div>
+<p>One might guess that the output will be “[3, 3]” as x is not changed. It is exactly what will happen in Python or Matlab. However, running it gives a seemingly surprising result.</p>
+<div id="cell-108" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">3</span>]</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x</span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>y[<span class="fl">1</span>] <span class="op">=</span> <span class="fl">6</span></span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x = [6, 3]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Int64}:
+ 6
+ 3</code></pre>
+</div>
+</div>
+<div id="cell-109" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># also</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fl">2</span>] <span class="op">=</span> <span class="fl">6</span></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>y = [6, 6]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Int64}:
+ 6
+ 6</code></pre>
+</div>
+</div>
+<p>The reason is that on the background of Python or Matlab. When you run <code>y = x</code>, they create a copy for x in the storage and make it y. However in Julia, <code>y = x</code> simply assigns y to the same array that x is assigned to. That’s why changing either of them changes the other.</p>
+<p>There are two alternative ways if you want the same behavior as in Python or Matlab.</p>
+<div id="cell-111" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">3</span>]</span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">copy</span>(x)</span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>y[<span class="fl">1</span>] <span class="op">=</span> <span class="fl">6</span></span>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x = [3, 3]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Int64}:
+ 3
+ 3</code></pre>
+</div>
+</div>
+<div id="cell-112" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">3</span>]</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">.=</span> x <span class="co">#element-wise assignment dodges the problem</span></span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>y[<span class="fl">1</span>] <span class="op">=</span> <span class="fl">6</span></span>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x = [3, 3]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Int64}:
+ 3
+ 3</code></pre>
+</div>
+</div>
+<p>Either one of them essentially makes y and x to be assigned to “different” arrays in your storage. If you know what a “pointer” is in c++, they now simply point to different places.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/xingxu-econ\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Xing Xu · University of Minnesota</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/xingxu-econ/xingxu-econ.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:xingxu@umn.edu">
+<p>Email</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
