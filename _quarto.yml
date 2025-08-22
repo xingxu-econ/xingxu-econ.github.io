@@ -8,13 +8,13 @@ project:
 website:
   title: "Xing Xu"
   site-url: https://xingxu-econ.github.io/
-  description: "Xing Xu — Economics, University of Minnesota. International macro."
+  description: "Xing Xu — Economics, University of Minnesota. International Macro."
   favicon: assets/University_of_Minnesota.svg
   open-graph: true
   twitter-card:
     card-style: summary
     creator: "@VincentXingXu"
-  repo-url: https://github.com/xingxu-econ/xingxu-econ.github.io
+  repo-url: https://github.com/2xu2
   repo-actions: [issue]
   bread-crumbs: true
 
@@ -36,28 +36,28 @@ website:
       - text: Julia Lectures
         icon: code-slash
         menu:
-          - text: "Lecture 1"
+          - text: "Fundamentals"
             href: Julia/Lectures/Julia_Lec_1_Compecon_Xing_Xu.ipynb
-          - text: "Lecture 2"
+          - text: "Neo-classical Growth"
             href: Julia/Lectures/Julia_Lec_2_Compecon_Xing_Xu.ipynb
-          - text: "Lecture 3"
+          - text: "Solvers and Interpolation"
             href: Julia/Lectures/Julia_Lec_3_Compecon_Xing_Xu.ipynb
-          - text: "Lecture 4"
+          - text: "Incomplete Markets"
             href: Julia/Lectures/Julia_Lec_4_Compecon_Xing_Xu.ipynb
-          - text: "Lecture 5"
+          - text: "Firm Dynamics"
             href: Julia/Lectures/Julia_Lec_5_Compecon_Xing_Xu.ipynb
-          - text: "Lecture 6"
+          - text: "Job Search"
             href: Julia/Lectures/Julia_Lec_6_Compecon_Xing_Xu.ipynb
     right:
+      - text: "Email"
+        icon: envelope-fill
+        href: xu000956@umn.edu
       - icon: github
         aria-label: GitHub
-        href: https://github.com/xingxu-econ
+        href: https://github.com/2xu2
 
   page-footer:
-    left: "© 2025 Xing Xu · University of Minnesota"
-    right:
-      - text: "Email"
-        href: "mailto:xingxu@umn.edu"
+    left: "© 2025 Xing Xu · University of Minnesota · [xu000956@umn.edu](xu000956@umn.edu)"
 
   # Search is enabled by default; configure it here
   search:
@@ -87,3 +87,4 @@ execute:
   warning: false
   message: false
   cache: true
+

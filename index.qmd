@@ -4,28 +4,30 @@ page-layout: article
 
 ::: {.columns}
 ::: {.column width="65%"}
-# Xing Xu
+# Xing (Vincent) Xu
 
-I am a fourth year PhD candidate in Economics at the University of Minnesota and a research analyst at the Federal Reserve Bank of Minneapolis. I work broadly on the topics under Macroeconomics and International Economics.  
+I am a fourth year PhD candidate in Economics at the University of Minnesota and a research analyst at the Federal Reserve Bank of Minneapolis. 
+
+I work broadly on topics under International Economics and Macroeconomics. 
 
 <div class="mt-3">
-[CV](cv.qmd){.btn .btn-primary .btn-sm}
 [Research](research.qmd){.btn .btn-outline-primary .btn-sm}
-[Teaching](teaching.qmd){.btn .btn-outline-primary .btn-sm}
-[GitHub](https://github.com/2xu2){.btn .btn-outline-secondary .btn-sm}
-[Email](mailto:xu000956@umn.edu){.btn .btn-outline-secondary .btn-sm}
+[CV](cv.qmd){.btn .btn-outline-primary .btn-sm}
+[Teaching](teaching.qmd){.btn .btn-outline-secondary .btn-sm}
+[Github](https://github.com/2xu2){.btn .btn-outline-secondary .btn-sm}
 </div>
 :::
 
 ::: {.column width="35%"}
-![portrait](assets/IMG_0419.jpg){fig-alt="Portrait of Xing Xu" width="100%"}
+![ ](assets/IMG_0419.jpg){fig-alt="Portrait of Xing Xu" width="100%"}
 :::
 :::
 
 ---
 
 ## News
-- **2025-08** — New draft available on NBER: Openness and Growth: A Comparison of the Experiences of China and Mexico (joint with Tim Kehoe)
+- **2025-08** — New Fed staff report: [Openness and Growth: A Comparison of the Experiences of China and Mexico](https://www.minneapolisfed.org/research/staff-reports/openness-and-growth-a-comparison-of-the-experiences-of-china-and-mexico) (joint with [Tim Kehoe](https://users.econ.umn.edu/~tkehoe/))
+- **2025-06** - Presented in SED 2025 on **Macroprudential Policy According to HANK** (joint with [Javier Bianchi](http://www.javierbianchi.com/) and [Louphou Coulibaly](https://sites.google.com/site/louphoucoulibaly))
 <!-- 
 ---
 
@@ -68,7 +70,12 @@ I am a fourth year PhD candidate in Economics at the University of Minnesota and
 --- -->
 
 ## Contact
-Department of Economics, University of Minnesota  
 Email: [xu000956@umn.edu](mailto:xu000956@umn.edu)
+
+Department of Economics, University of Minnesota
+
+Federal Reserve Bank of Minneapolis
+
+
 
 *CV, papers, and teaching materials are updated regularly.*

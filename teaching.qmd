@@ -1,0 +1,15 @@
+---
+page-layout: article
+---
+
+## Short Courses / Lectures
+- **PhD Computational Economics with Julia** *(Summer 2024)*  
+  Materials: [Computational Economics Crash Course](https://compeconcrashcourse.github.io/)
+
+## TA Experience
+- Advanced Financial Economics  
+- Advanced Mathematical Economics  
+- Introduction to Econometrics
+
+## Mentoring
+- Undergraduate thesis advising

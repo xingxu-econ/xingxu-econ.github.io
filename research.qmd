@@ -1,0 +1,55 @@
+---
+page-layout: article
+---
+
+## Working Papers
+
+::: {.paper}
+### Openness and Growth: A Comparison of the Experiences of China and Mexico
+with [Tim Kehoe](https://users.econ.umn.edu/~tkehoe/)
+[PDF](https://www.minneapolisfed.org/research/staff-reports/openness-and-growth-a-comparison-of-the-experiences-of-china-and-mexico){.btn .btn-primary .btn-sm}
+[NBER Working Paper](https://www.nber.org/){.btn .btn-outline-primary .btn-sm} 
+[Fed Staff Report](https://www.minneapolisfed.org/research/staff-reports/openness-and-growth-a-comparison-of-the-experiences-of-china-and-mexico){.btn .btn-outline-primary .btn-sm}
+
+ <details>
+<summary class="btn btn-primary btn-sm">Abstract</summary>
+<div class="small text-muted mt-2">
+In the late 1980s, Mexico opened itself to international trade and foreign investment, followed in the early 1990s by China. China and Mexico are still the two countries characterized as middle-income by the World Bank with the highest levels of merchandise exports. Although their measures of openness have been comparable, these two countries have had sharply different economic performances: China has achieved spectacular growth, whereas Mexico's growth has been disappointingly modest. In this article, we extend the analysis of Kehoe, Ruhl (2010) to account for the differences in these experiences. We show that China opened its economy while it was still achieving rapid growth from shifting employment out of agriculture and into manufacturing while Mexico opened long after its comparable phase of structural transformation. China is only now catching up with Mexico in terms of GDP per working-age person, and it still lags behind in terms of the fraction of its population engaged in agriculture. Furthermore, we argue that China has been able to move up a ladder of quality and technological sophistication in the composition of its exports and production, while Mexico seems to be stuck exporting a fixed set of products to its North American neighbors.
+</div>
+</details>
+:::
+
+::: {.grid}
+::: {.g-col-6}
+![GDP per working age person, PPP](<assets/QR_paper/GDP per working age person, PPP.jpg>){width="100%"}
+:::
+
+::: {.g-col-6}
+![Exports of goods and services (% of GDP)](<assets/QR_paper/Exports of goods and services.jpg>){width="100%"}
+:::
+:::
+
+
+## Work in Progress
+
+::: {.paper}
+### Macroprudential Policy According to HANK
+with [Javier Bianchi](http://www.javierbianchi.com/) and [Louphou Coulibaly](https://sites.google.com/site/louphoucoulibaly) · — Presented at SED 2025
+
+<details>
+<summary class="btn btn-outline-primary btn-sm">Abstract</summary>
+<div class="small text-muted mt-2">
+This paper studies the design of macroprudential policy in a heterogeneous agent New Keynesian (HANK) model. We present an open economy model with downward nominal wage rigidity and uninsurable unemployment risk. We show that
+the presence of unemployment risk at the extensive margin amplify the welfare costs of aggregate demand externalities. We solve for the optimal schedule of ex-ante and ex-post taxes on borrowing that maximize households' welfare.
+</div>
+</details>
+:::
+<!-- When ready:
+[Draft (PDF)](assets/papers/hank_macroprudential_draft.pdf){.btn .btn-outline-primary .btn-sm}
+[Slides (PDF)](assets/slides/hank_macroprudential_slides.pdf){.btn .btn-outline-secondary .btn-sm}
+-->
+
+::: {.paper}
+### Fixed Exchange Rates, Macroprudential Policies, and Monetary Policy Transmissions
+::: 
+(Draft available soon!)
