@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Double X Monogram — Offset</title>
+  <desc id="desc">Two X shapes (maroon and gold) inside a white circle with a dark ring.</desc>
+
+  <!-- White background circle + dark ring -->
+  <circle cx="128" cy="128" r="116" fill="#FFFFFF" stroke="#222222" stroke-width="8"></circle>
+
+  <!-- Left X (with white outline then color) -->
+  <!-- Outline -->
+  <line x1="40" y1="184" x2="152" y2="72" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round"></line>
+  <line x1="40" y1="72" x2="152" y2="184" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round"></line>
+  <!-- Color -->
+  <line x1="40" y1="184" x2="152" y2="72" stroke="#7A0019" stroke-width="26" stroke-linecap="round"></line>
+  <line x1="40" y1="72" x2="152" y2="184" stroke="#7A0019" stroke-width="26" stroke-linecap="round"></line>
+
+  <!-- Right X (with white outline then color) -->
+  <!-- Outline -->
+  <line x1="104" y1="184" x2="216" y2="72" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round"></line>
+  <line x1="104" y1="72" x2="216" y2="184" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round"></line>
+  <!-- Color -->
+  <line x1="104" y1="184" x2="216" y2="72" stroke="#FFCC33" stroke-width="26" stroke-linecap="round"></line>
+  <line x1="104" y1="72" x2="216" y2="184" stroke="#FFCC33" stroke-width="26" stroke-linecap="round"></line>
+</svg>
