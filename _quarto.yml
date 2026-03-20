@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: docs
   resources:
     - assets/**
     - Julia/Lectures/**
@@ -72,7 +72,7 @@ format:
     theme:
       light: cosmo
       dark: darkly
-    css: styles.css
+    css: style.css
     toc: true
     toc-depth: 3
     smooth-scroll: true
