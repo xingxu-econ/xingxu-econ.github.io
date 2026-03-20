@@ -3,7 +3,7 @@
 
 :root{
   --xx-text:#222;
-  --xx-muted:#666;
+  --xx-muted:#222;
   --xx-accent:#1a73e8;           /* link color (light mode) */
   --xx-border:#e9ecef;
 }
