@@ -2,16 +2,17 @@
 page-layout: article
 ---
 
-## Working Papers
+## Publication
 
 ::: {.paper}
 ### Openness and Growth: A Comparison of the Experiences of China and Mexico
-with [Tim Kehoe](https://users.econ.umn.edu/~tkehoe/)
-[PDF](https://www.minneapolisfed.org/research/staff-reports/openness-and-growth-a-comparison-of-the-experiences-of-china-and-mexico){.btn .btn-primary .btn-sm}
-[NBER Working Paper](https://www.nber.org/){.btn .btn-outline-primary .btn-sm} 
-[Fed Staff Report](https://www.minneapolisfed.org/research/staff-reports/openness-and-growth-a-comparison-of-the-experiences-of-china-and-mexico){.btn .btn-outline-primary .btn-sm}
+with [Tim Kehoe](https://users.econ.umn.edu/~tkehoe/) · — [*Federal Reserve Bank of Minneapolis Quarterly Review*](https://researchdatabase.minneapolisfed.org/concern/publications/rx913q066?locale=en), 2025
 
- <details>
+[PDF](https://www.minneapolisfed.org/research/staff-reports/openness-and-growth-a-comparison-of-the-experiences-of-china-and-mexico){.btn .btn-outline-primary .btn-sm}
+[NBER Working Paper](https://www.nber.org/papers/w34181){.btn .btn-outline-primary .btn-sm} 
+[Fed Staff Report](https://www.minneapolisfed.org/research/staff-reports/openness-and-growth-a-comparison-of-the-experiences-of-china-and-mexico){.btn .btn-outline-primary .btn-sm}
+[Sildes](https://www.dropbox.com/scl/fi/npvx5cfpwv6gf8mtxnbyq/slides_1117.pdf?rlkey=t7x11iv0ajvvydug98or3ksey&st=lzbi9ud6&dl=0){.btn .btn-outline-primary .btn-sm}
+<details>
 <summary class="btn btn-primary btn-sm">Abstract</summary>
 <div class="small text-muted mt-2">
 In the late 1980s, Mexico opened itself to international trade and foreign investment, followed in the early 1990s by China. China and Mexico are still the two countries characterized as middle-income by the World Bank with the highest levels of merchandise exports. Although their measures of openness have been comparable, these two countries have had sharply different economic performances: China has achieved spectacular growth, whereas Mexico's growth has been disappointingly modest. In this article, we extend the analysis of Kehoe, Ruhl (2010) to account for the differences in these experiences. We show that China opened its economy while it was still achieving rapid growth from shifting employment out of agriculture and into manufacturing while Mexico opened long after its comparable phase of structural transformation. China is only now catching up with Mexico in terms of GDP per working-age person, and it still lags behind in terms of the fraction of its population engaged in agriculture. Furthermore, we argue that China has been able to move up a ladder of quality and technological sophistication in the composition of its exports and production, while Mexico seems to be stuck exporting a fixed set of products to its North American neighbors.
@@ -51,5 +52,20 @@ the presence of unemployment risk at the extensive margin amplify the welfare co
 
 ::: {.paper}
 ### Fixed Exchange Rates, Macroprudential Policies, and Monetary Policy Transmissions
+(Draft available soon!) · — Presented at *Minnesota-Wisconsin International-Macro Student Workshop (2025)*, and CIFER, Tsinghua University
 ::: 
-(Draft available soon!)
+
+::: {.paper}
+### A General Equilibrium Trade Model with the Least-Traded Products Margin
+with [Tim Kehoe](https://users.econ.umn.edu/~tkehoe/) and [Kim Ruhl](https://www.kimjruhl.com/)
+:::  
+
+<!-- ::: {.paper}
+### Non-Linearities in HANK: When do they matter?
+with [Javier Bianchi](http://www.javierbianchi.com/)
+:::  -->
+
+::: {.paper}
+### The Aggregate Impact of Anti-dumping Policy: Theory and Evidence
+with [Kim Ruhl](https://www.kimjruhl.com/) and [Wentao Zhou](https://sites.google.com/view/wentao-madison/home)
+::: 

@@ -9,7 +9,7 @@ website:
   title: "Xing Xu"
   site-url: https://xingxu-econ.github.io/
   description: "Xing Xu — Economics, University of Minnesota. International Macro."
-  favicon: assets/University_of_Minnesota.svg
+  favicon: assets/XX_icon.svg
   open-graph: true
   twitter-card:
     card-style: summary
@@ -20,6 +20,7 @@ website:
 
   navbar:
     pinned: true
+    logo: assets/XX_icon.svg
     left:
       - text: Homepage
         href: index.qmd
@@ -51,7 +52,7 @@ website:
     right:
       - text: "Email"
         icon: envelope-fill
-        href: xu000956@umn.edu
+        href: mailto:xu000956@umn.edu
       - icon: github
         aria-label: GitHub
         href: https://github.com/2xu2
@@ -88,3 +89,4 @@ execute:
   message: false
   cache: true
 
+# to deploy use quarto publish gh-pages
